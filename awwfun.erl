@@ -153,5 +153,56 @@ dis(A, B, C) ->
 
 
 
+%%%%%%%%% pmap
 
 
+part(List) ->
+        part(List, []).
+part([], Acc) ->
+        lists:reverse(Acc);
+part([H], Acc) ->
+        lists:reverse([[H]|Acc]);
+part([H1,H2|T], Acc) ->
+        part(T, [[H1,H2]|Acc]).
+
+
+
+% 11> A = [1,3,3,4,5,6,6,7,8,4,5,6,6,7,73,3,3,3,3].
+% [[1,3],[3,4],[5,6],[6,7,8],[4,5],[6,6,7],[73,3],[3,3,3]]
+split_list(L) ->
+    {L1, L2} = split_l(L),
+    [{L3, L4}, {L5, L6}] = [split_l(X)||X<-[L1, L2]],
+    [{L7, L8}, {L9, L10}, {L11, L12}, {L13, L14}] =
+      [split_l(X)||X<-[L3, L4, L5, L6]],
+    [L7, L8, L9, L10, L11, L12, L13, L14].
+
+
+split_l(L)  ->
+ lists:split(length(L) div 2, L).
+
+
+
+% 11> A = [1,3,3,4,5,6,6,7,8,4,5,6,6,7,73,3,3,3,3].
+% [1,3,3,4,5,6,6,7,8,4,5,6,6,7,73,3,3,3,3]
+% 12> awwfun:test_pmap([A,A,A,A,A]).
+
+
+test_pmap(L) ->
+    Processor = fun(X) -> split_list(X) end,
+    pmap(Processor, L).
+
+
+ pmap(F, L) ->
+    S = self(),
+    Pids = lists:map(fun(I) -> spawn(fun() -> pmap_f(S, F, I) end) end, L),
+    pmap_gather(Pids).
+
+pmap_gather([H|T]) ->
+    receive
+        {H, Ret} -> [Ret|pmap_gather(T)]
+    end;
+pmap_gather([]) ->
+    [].
+
+pmap_f(Parent, F, I) ->
+    Parent ! {self(), (catch F(I))}.
