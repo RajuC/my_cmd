@@ -19,6 +19,12 @@ sudo apt-get install libwxgtk2.8-dev
 sudo apt-get install libqt4-opengl-dev
 sudo apt-get install libgtk2.0-dev
 
+### for wxwidgets 
+sudo apt-key adv --fetch-keys http://repos.codelite.org/CodeLite.asc
+sudo apt-add-repository 'deb http://repos.codelite.org/wx3.0.2/ubuntu/ trusty universe'
+sudo apt-get update
+sudo apt-get install libwxbase3.0-0-unofficial libwxbase3.0-dev libwxgtk3.0-0-unofficial libwxgtk3.0-dev wx3.0-headers wx-common
+
 Download, extract, configure, make, install
 
 cd ~/Downloads
