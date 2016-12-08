@@ -9,6 +9,13 @@ https://drive.google.com/file/d/0B_HAFnYs6Ur-M0JSeE1BVWtEQ2c/view
 
 
 
+############# open termial from current directory
+
+sudo apt-get install nautilus-open-terminal
+and restart
+open any folder and right click on it to find open in terminal
+
+
 ################# gnome metacity compiz flashback
 
 sudo apt-get update; sudo apt-get install gnome-session-fallback
