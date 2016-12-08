@@ -720,6 +720,7 @@ scp commands
 To upload a file from your laptop to Amazon instance:
 
 $scp -i ~/Desktop/amazon.pem ~/Desktop/MS115.fa  ubuntu@ec2-54-166-128-20.compute-1.amazonaws.com:~/data/
+sudo scp -i "aws_key.pem" web_html_release.tar.gz  ubuntu@instance.us-west-2.compute.amazonaws.com:/home/ubuntu/
 
 to download a file from Amazon instance to your laptop:
 
