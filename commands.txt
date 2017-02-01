@@ -842,7 +842,12 @@ http://stackoverflow.com/questions/1954894/using-trace-and-dbg-in-erlang
 
 ##################### Curl 
 http://curl.haxx.se/docs/httpscripting.html
+
+http://stackoverflow.com/questions/356705/how-to-send-a-header-using-a-http-request-through-a-curl-call
 =================post request
+
+
+
 
 curl -H "Content-Type: application/json" -X POST -d '{"Action":"PublishToTarget","Message":{"title": "SPORTalk", "message": "text", "url": "url" },"EndPointArn":"arn:aws:sns:us-east-1:742333168435:endpoint/GCM/GCM-dev/c0f6bbfc-a71f-3de6-b08d-fccb7c3b2561"}' http://localhost:8044/
 
