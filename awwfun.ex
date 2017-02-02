@@ -47,6 +47,10 @@ def test_pm1(map) when map_size(map) == 0 do
   end
 
 
+  def datetime do
+    DateTime.to_string(DateTime.utc_now())
+  end
+
 
 ## ============================================================
 
