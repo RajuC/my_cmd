@@ -12,13 +12,36 @@ qs([]) -> [];
 qs([F|N]) ->
 	qs([R||R<-N,R=<F]) ++ [F] ++ qs([R||R<-N,R>F]). 
 
-%% ====================== transpose of a matrix
+%% ====================== transpose of a 3X3 matrix
 %transpose({[1,2,3],[4,5,6],[7,8,9]},[])   =====> {[1,4,7],[2,5,8],[3,6,9]}
 
 transpose({[],[],[]},Transpose) ->
 	list_to_tuple(Transpose);
 transpose({[H1|T1],[H2|T2],[H3|T3]},Transpose) ->
 	transpose({T1,T2,T3},Transpose ++ [[H1,H2,H3]]).
+	
+	
+	
+	
+%%======================= transpose of nXn matrix
+
+transpose(L) ->
+  tranpose(L, []).
+
+transpose([], Res) ->
+  Res;
+transpose([H|T], FinalTranspose) ->
+  transpose(T, H, [], [], FinalTranspose).
+
+transpose(_tails, [], [], Tails, FinalTranspose) ->
+  transpose(Tails, FinalTranspose);
+transpose(_tails, [], Heads, Tails, FinalTranspose) ->
+  transpose(Tails, FinalTranspose ++ [Heads]);
+transpose([], [H|T1], Heads, Tails, FinalTranspose) ->
+  transpose([], [], Heads ++ [H], Tails ++ [T1], FinalTranspose);
+transpose([HH|TT], [H|T1], Heads, Tails, FinalTranspose) ->
+  transpose(TT, HH, Heads ++ [H], Tails ++ [T1], FinalTranspose).
+	
 
 %% ======================  merging  [1,2,3] ,[4,5,6] - > [1,4,2,5,3,6]
 merge(L1,L2) ->
