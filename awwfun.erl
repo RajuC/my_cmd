@@ -44,7 +44,7 @@ transpose([HH|TT], [H|T1], Heads, Tails, FinalTranspose) ->
 	
 %%% ================ using list comphrehension
 
-transpose1([[],[],[]], Res) ->
+transpose1(L, Res) when lists:flatten(L) == [] ->
   Res;
 
 transpose1(L, Res) ->
