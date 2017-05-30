@@ -42,6 +42,16 @@ transpose([], [H|T1], Heads, Tails, FinalTranspose) ->
 transpose([HH|TT], [H|T1], Heads, Tails, FinalTranspose) ->
   transpose(TT, HH, Heads ++ [H], Tails ++ [T1], FinalTranspose).
 	
+%%% ================ using list comphrehension
+
+transpose1([[],[],[]], Res) ->
+  Res;
+
+transpose1(L, Res) ->
+  Transpose = [H || [H|_T] <- L ],
+  Tails = [T|| [_H|T] <- L],
+  transpose1(Tails, Res ++ [Transpose]).	
+	
 
 %% ======================  merging  [1,2,3] ,[4,5,6] - > [1,4,2,5,3,6]
 merge(L1,L2) ->
