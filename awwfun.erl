@@ -44,14 +44,18 @@ transpose([HH|TT], [H|T1], Heads, Tails, FinalTranspose) ->
 	
 %%% ================ using list comphrehension
 
-transpose1(L, Res) when lists:flatten(L) == [] ->
-  Res;
+transpose1(L) ->
+  transpose1(L, []).
+
 
 transpose1(L, Res) ->
-  Transpose = [H || [H|_T] <- L ],
-  Tails = [T|| [_H|T] <- L],
-  transpose1(Tails, Res ++ [Transpose]).	
-	
+  case lists:flatten(L) == [] of
+    true -> Res;
+    false ->
+      Transpose = [H || [H|_T] <- L ],
+      Tails = [T|| [_H|T] <- L],
+      transpose1(Tails, Res ++ [Transpose])
+  end.
 
 %% ======================  merging  [1,2,3] ,[4,5,6] - > [1,4,2,5,3,6]
 merge(L1,L2) ->
@@ -66,6 +70,19 @@ mergeR(L1,[H|T],Res) ->
 	mergeL(L1,T,[H]++Res);
 mergeR([],[],Res) ->
 	Res.
+
+
+
+
+merge_lists(L1, L2) ->
+  merge(L1, L2, []).
+
+merge([],[], Res) ->
+  Res;
+
+merge([H1|T1], [H2|T2], Res) ->
+  merge(T1,T2, Res ++ [H1, H2]).
+
 
 %% ====================== <<"2015-11-23T16:58:39">>
 
