@@ -259,6 +259,14 @@ pmap_f(Parent, F, I) ->
 
 
 
+encode(Mdn) ->
+	Base64EncMdn = base64:encode_to_string(Mdn),
+	re:replace(Base64EncMdn,"=","!",[global, {return, list}]).
+
+decode(Base64EncMdn) ->
+	Base64EncMdnWoPad = re:replace(Base64EncMdn,"!","=",[global, {return, list}]),
+	base64:decode_to_string(Base64EncMdnWoPad).
+
 
 % vm.args env variables
 
