@@ -102,6 +102,24 @@ get_prop_ts(TimeStamp)->
 
 
 
+
+%%=============================
+
+%% TS = os:timestamp(). // TS format {1513,617997,240000}
+diff_timestamp(TS1, TS2) ->
+	DT1 = calendar:now_to_datetime(TS1),
+	DT2 = calendar:now_to_datetime(TS2),
+	diff_datetime(DT1, DT2).
+
+
+%% calendar:local_time(). // DT format  {{2017,12,18},{11,58,10}}
+
+diff_datetime(DT1, DT2) ->
+	GregSec1 = calendar:datetime_to_gregorian_seconds(DT1),
+	GregSec2 = calendar:datetime_to_gregorian_seconds(DT2),
+	abs(GregSec2 - GregSec1).
+
+
 %% ==================== to binary 
 
 to_bin({A,B})  ->
