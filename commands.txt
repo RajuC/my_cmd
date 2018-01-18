@@ -59,6 +59,31 @@ index=erlang host=sq2* Error: Missing_ImageUrl_Details
 
 
 
+#################### less less
+
+less data.log
+
+^c/^d to search
+
+
+  /pattern          *  Search forward for (N-th) matching line.
+  ?pattern          *  Search backward for (N-th) matching line.
+  &pattern          *  Display only matching lines
+
+  g  <  ESC-<       *  Go to first line in file (or line N).
+  G  >  ESC->       *  Go to last line in file (or line N).
+
+  n                 *  Repeat previous search (for N-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+
+  p  %              *  Go to beginning of file (or N percent into file).
+  t                 *  Go to the (N-th) next tag.
+  T                 *  Go to the (N-th) previous tag.
+
+
+
+
+
 
 ######################33 RestApi
 
