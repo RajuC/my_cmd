@@ -66,6 +66,8 @@ less data.log
 ^c/^d to search
 
 
+^f for tail/ wait for data
+
   /pattern          *  Search forward for (N-th) matching line.
   ?pattern          *  Search backward for (N-th) matching line.
   &pattern          *  Display only matching lines
