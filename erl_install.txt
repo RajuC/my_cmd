@@ -32,7 +32,7 @@ wget http://erlang.org/download/otp_src_18.2.1.tar.gz
 wget http://www.erlang.org/download/otp_src_R14B02.tar.gz
 tar -zxf otp_src_R14B02.tar.gz
 cd  otp_src_R14B02
-./configure
+./configure    or ./configure --prefix=PATH_TO_ERL_BIN_FILES 
 make
 sudo make install
 
