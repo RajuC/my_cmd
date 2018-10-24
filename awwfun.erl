@@ -5,6 +5,10 @@
 
 
 
+crypto:start(),
+[crypto:rand_uniform(1, 10) || _ <- lists:seq(1, 1000)].
+
+
 start() ->
 	ok.
 %% ====================== quick sort
